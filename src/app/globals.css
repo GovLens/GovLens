@@ -105,3 +105,36 @@ button {
 button:active {
   transform: scale(0.95);
 }
+
+/* styles/globals.css */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #4A90E2;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+.bg-lines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 1px,
+    #D2DAD9 1px,
+    #D2DAD9 2px
+  ),
+  repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 1px,
+    #D2DAD9 1px,
+    #D2DAD9 2px
+  );
+}
+

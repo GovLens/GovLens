@@ -10,7 +10,7 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ title, subtitle, url }) => {
   return (
-    <div className="relative w-[300px] h-[160px] cursor-pointer group transition-transform duration-300 transform hover:scale-105">
+    <div className="relative w-[300px] h-[160px]  group transition-transform duration-300 transform hover:scale-105">
       <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
       <div className="relative shadow-xl bg-gray-400 border border-gray-800 px-4 py-8 h-full overflow-hidden rounded-2xl flex flex-col justify-end">
         <div className="flex items-center mb-4">

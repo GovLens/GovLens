@@ -6,7 +6,7 @@ export function Explorecard() {
     <>
  
 
-    <div className=" mt-72 pt-8 h-[370px] bg-[#D2DAD9]">
+    <div className=" mt-72 pt-8 h-[370px] bg-[#D2DAD9]" id="explore-dao">
     <Title title={"Explore DAO"} />
     <HoverEffect items={projects} />
     </div>

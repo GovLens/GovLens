@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { ConnectBtn } from './ConnectBtn';
 import { motion } from 'framer-motion';
 import { IoIosHome } from "react-icons/io";
+import { Link as ScrollLink } from 'react-scroll';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -49,11 +50,12 @@ export default function Navbar() {
             </motion.div>
             <motion.div
               whileTap={{ scale: 0.9, rotate: -10 }}
-              className={`px-4 py-2 text-black transition-transform duration-300 ${isActive('/services') ? 'font-bold' : ''}`}
+              className={`cursor-pointer   px-4 py-2 text-black transition-transform duration-300 ${isActive('/services') ? 'font-bold' : ''}`}
             >
-              <Link href="/services">
+              <ScrollLink to="explore-dao" smooth={true} duration={900}                 offset={-160} 
+              >
                 Explore DAOs
-              </Link>
+              </ScrollLink>
             </motion.div>
           </div>
 
