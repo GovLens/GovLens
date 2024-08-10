@@ -34,17 +34,17 @@ export const HoverEffect = ({
   };
 
   return (
-    <div className={cn("flex ml-16", className)}>
+    <div className={cn("flex ml-16 mt-8", className)}>
       {items.map((item, idx) => (
         <div
           key={item?.link}
-          className="relative group block p-2 h-full w-full"
+          className="relative group block p-2 h-[400px] w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
           onClick={() => handleCardClick(item.title)}
         >
           {/* Apply scaling and shadow effect on hover */}
-          <div className={`transition-transform duration-300 ease-in-out ${hoveredIndex === idx ? 'scale-110 shadow-xl' : 'scale-100'}` }>
+          <div className={`transition-transform duration-300 ease-in-out ${hoveredIndex === idx ? 'scale-110 ' : 'scale-100'}` }>
             {item.title === "Optimism" ? (
               <Link href={item.link} className="block h-full w-full">
                 <Card>

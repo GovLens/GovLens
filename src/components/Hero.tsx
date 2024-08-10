@@ -38,9 +38,9 @@ export default function Hero() {
     className='mt-24'
     >
       <Text/>
-      <div className=' h-[300px]  bg-[#D2DAD9]'>
+      <div className=' h-[300px]  bg-[#D2DAD9] mt-20'>
       <Title title= {"Key Features"} />
-      <div className='flex  flex-wrap gap-10 ml-16'>
+      <div className='flex  flex-wrap gap-10 ml-24 mt-8'>
       {
             data.map((item, index) => (
               <Card key={index} title={item.title} subtitle={item.subtitle} url={item.url} />
