@@ -1,7 +1,8 @@
 import React from "react";
 import { Meteors } from "../components/ui/meteors";
 
-export const Card = ({
+export const Card = (
+  {
   title,
   subtitle,
   url,
@@ -9,7 +10,8 @@ export const Card = ({
   title: string;
   subtitle: string;
   url: string;
-}) => {
+}
+) => {
   return (
     <div className="relative w-[300px] h-[180px] cursor-pointer group transition-transform duration-300 transform hover:scale-105">
       <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-blue-500 to-teal-500 transform scale-[0.80] bg-red-500 rounded-full blur-3xl" />
