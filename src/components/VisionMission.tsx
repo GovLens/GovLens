@@ -18,14 +18,20 @@ const data = [
 
 export default function VisionMission() {
   return (
-    <div className='bg-[#D2DAD9] h-[700px] '>
-       <Title title={"Vision Mission "}/>
+    <div className='bg-[#D2DAD9] h-[380px] pt-8 '>
+       <Title title={"Vision And Mission "}/>
        <div className='flex items-center justify-center gap-16 mt-16 '>
        <VisionMissionCard  title={data[0].title}           imageUrl={data[0].imageUrl}  subtitle={data[0].subtitle}    />
        <VisionMissionCard  title={data[1].title}           imageUrl={data[1].imageUrl}  subtitle={data[1].subtitle}    />
        </div>
-       
+      
+      <div className='h-24  bg-[#d2dad9] '>
+      <h1 className="text-center pt-10 text-gray-600 dark:text-gray-300 font-semibold text-sm md:text-base lg:text-lg dark:bg-gray-900">
+     Copyright ©️ 2024, Created by GovLens
+</h1>
 
+      </div>
+ 
     </div>
   )
 }

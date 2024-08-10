@@ -44,7 +44,7 @@ export default function Navbar() {
               className={`px-4 py-2 text-black transition-transform duration-300 ${isActive('/about') ? 'font-bold' : ''}`}
             >
               <Link href="/about">
-                About
+                Optimi
               </Link>
             </motion.div>
             <motion.div
@@ -52,7 +52,7 @@ export default function Navbar() {
               className={`px-4 py-2 text-black transition-transform duration-300 ${isActive('/services') ? 'font-bold' : ''}`}
             >
               <Link href="/services">
-                Services
+                Explore DAOs
               </Link>
             </motion.div>
           </div>

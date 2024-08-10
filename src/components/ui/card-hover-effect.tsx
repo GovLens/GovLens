@@ -45,15 +45,15 @@ export const HoverEffect = ({
         >
           {/* Apply scaling and shadow effect on hover */}
           <div className={`transition-transform duration-300 ease-in-out ${hoveredIndex === idx ? 'scale-110 ' : 'scale-100'}` }>
-            {item.title === "Optimism" ? (
+            {item.title === "Optimism DAO" ? (
               <Link href={item.link} className="block h-full w-full">
                 <Card>
                   <div className="flex justify-center">
                     <Image
                       src={item.image}
                       alt={item.title}
-                      width={100}
-                      height={100}
+                      width={70}
+                      height={70}
                       className="rounded-2xl object-cover"
                     />
                   </div>
@@ -66,8 +66,8 @@ export const HoverEffect = ({
                   <Image
                     src={item.image}
                     alt={item.title}
-                    width={100}
-                    height={100}
+                    width={70}
+                    height={70}
                     className="rounded-full object-cover"
                   />
                 </div>

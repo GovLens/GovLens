@@ -6,7 +6,7 @@ import VisionMission from "@/components/VisionMission";
 export default function Home() {
   return (
     <>
-    <div className="bg-image"
+    <div className="bg-image "
    
 
     >

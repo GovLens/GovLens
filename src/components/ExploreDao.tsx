@@ -6,7 +6,7 @@ export function Explorecard() {
     <>
  
 
-    <div className=" mt-72 h-[350px] bg-[#D2DAD9]">
+    <div className=" mt-72 pt-8 h-[370px] bg-[#D2DAD9]">
     <Title title={"Explore DAO"} />
     <HoverEffect items={projects} />
     </div>
@@ -16,31 +16,31 @@ export function Explorecard() {
 export const projects = [
   {
     title: "Optimism DAO",
-    link: "",
+    link: "/optimism-dao",
     image:"/img/optimism.png"
   },
   {
     title: "Arbitrum DAO",
     link: "",
-    image:"/img/arbitrum.png"
+    image:"/img/arbitrum.jpg"
 
   },
   {
     title: "ENS DAO",
   link: "",
-  image:"/img/bg.jpg"
+  image:"/img/ENSDao.png"
 
   },
   {
-    title: "Maker DAO",
+    title: "Safe DAO",
     link: "",
-    image:"/img/bg.jpg"
+    image:"/img/safedao.jpg"
 
   },
   {
     title: "ADD DAO",
     link: "",
-    image:"/img/bg.jpg"
+    image:"/img/plus.png"
 
   },
  

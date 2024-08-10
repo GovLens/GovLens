@@ -38,7 +38,7 @@ export default function Hero() {
     className='mt-24'
     >
       <Text/>
-      <div className=' h-[300px]  bg-[#D2DAD9] mt-20'>
+      <div className=' h-[300px]  bg-[#D2DAD9] mt-20 pt-8'>
       <Title title= {"Key Features"} />
       <div className='flex  flex-wrap gap-10 ml-24 mt-8'>
       {
