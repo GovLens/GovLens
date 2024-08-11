@@ -11,8 +11,10 @@ export default function Home() {
         <Navbar/>
         <Hero/>
     </div>
-         <Explorecard/> 
-         <VisionMission/>
+
+    <Explorecard/> 
+    <VisionMission/>
+        
     </>
       
   );
