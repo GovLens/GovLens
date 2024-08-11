@@ -1,36 +1,30 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# GovLens
 
-## Getting Started
+[GovLens](https://govlens.vercel.app) is a platform designed to provide a comprehensive governance health score and insights into the performance of Decentralized Autonomous Organizations (DAOs). By aggregating and analyzing critical governance data, GovLens empowers DAO members, leaders, and stakeholders to make informed decisions.
 
-First, run the development server:
+## Core Functionalities
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- *Real-time Metrics*: Tracks key performance indicators (KPIs) such as Token Holders, Total Trades of DAO Token, Airdrop Tables, DAO Token Transfers, and more.
+- *Data Visualization*: Presents complex data in easy-to-understand visualizations (charts, graphs, dashboards) to identify trends and patterns.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Benefits
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- *Improved Decision Making*: Data-driven insights for DAO leaders on resource allocation, governance structure, and community building.
+- *Enhanced Transparency*: Clear and accessible information about DAO performance.
+- *Increased Community Engagement*: Tracking community participation and sentiment for better engagement.
+- *Risk Mitigation*: Identifying potential risks through metric monitoring for proactive measures.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Sponsors
 
-## Learn More
+GovLens is powered by:
 
-To learn more about Next.js, take a look at the following resources:
+- As of now we have added [Optimism DAO](https://www.optimism.io/)
+- For real-time data from blockchain we have used [Goldsky](https://goldsky.com)
+- For transaction insights we have implemented [Blockscout](https://www.blockscout.com/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Target Audience
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- *DAO Leaders*: For data-driven decisions and optimized governance processes.
+- *DAO Members*: For gaining insights into DAO performance and effective participation.
+- *Investors*: For assessing DAO health and potential.
+- *Researchers*: For studying DAO governance models and trends.
