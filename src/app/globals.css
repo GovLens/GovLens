@@ -112,6 +112,13 @@ button:active {
   100% { transform: rotate(360deg); }
 }
 
+
+  body {
+    background-color: #D2DAD9;
+  }
+
+
+
 .loading {
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-left: 4px solid #4A90E2;
@@ -138,3 +145,17 @@ button:active {
   );
 }
 
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notification {
+  animation: slideIn 0.5s ease-out;
+}

@@ -1,20 +1,22 @@
-"use client";
+"use client"
 import { useEffect, useState } from 'react';
-import LineChart from '@/components/chart/Linechart'
-import OpPrice from '@/components/chart/OpPrice'
-import Navbar from '@/components/Navbar'
-import React from 'react'
-import Content from './Content'
-import Airdops from "../../components/chart/Airdops"
-import DailyTransactions from "../../components/chart/DailyTransactions"
+import LineChart from '@/components/chart/Linechart';
+import OpPrice from '@/components/chart/OpPrice';
+import Navbar from '@/components/Navbar';
+import Content from './Content';
+import Airdops from "../../components/chart/Airdops";
+import DailyTransactions from "../../components/chart/DailyTransactions";
 import Proposals from './Proposals';
 import StatsBar from './StatsBar';
+
 export default function Page() {
   const [view, setView] = useState("analysis");
-  const [opHolder, setOpHolder] = React.useState([]);
-  const [opPrice, setOpPrice] = React.useState([]);
-  const [airdrops, setirdrops] = React.useState([]);
-  const [transfer, setTransfer] = React.useState([]);
+  const [opHolder, setOpHolder] = useState([]);
+  const [opPrice, setOpPrice] = useState([]);
+  const [airdrops, setAirdrops] = useState([]);
+  const [transfer, setTransfer] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const handleSetView = (newView) => {
     setView(newView);
   };
@@ -32,7 +34,8 @@ export default function Page() {
         setOpHolder(reversedRows);
       } catch (error) {
         console.error('Error fetching data:', error);
-        // Handle error appropriately here (e.g., show an error message to the user)
+      } finally {
+        setLoading(false);
       }
     };
   
@@ -61,41 +64,52 @@ export default function Page() {
   
         console.log(transferData);
         const reversedRows = priceData.result.rows.reverse();
-        setirdrops(airdropsData.result.rows);
+        setAirdrops(airdropsData.result.rows);
         setOpPrice(reversedRows);
         setTransfer(transferData.result.rows);
       } catch (error) {
         console.error('Error fetching data:', error);
-        // Handle error appropriately here (e.g., show an error message to the user)
+      } finally {
+        setLoading(false);
       }
     };
   
     getData();
   }, []);
-  
+
   return (
     <div>
-      <Navbar/>
+      <Navbar />
       <Content view={view} setView={handleSetView} />
       
-       
-
       {/* Conditional Rendering Based on View */}
-      <div className="bg-[#E2E6E5]">
+      <div className="bg-[#E2E6E5] p-4">
         {view === "analysis" && (
           <>
-          <StatsBar/>
-          <LineChart data = {opHolder}/>
-        <OpPrice data ={opPrice}/>
-      <Airdops data={airdrops}/>
-      <DailyTransactions data ={transfer}/>
+            {loading ? (
+              <div className="flex justify-center items-center h-64">
+                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
+              </div>
+            ) : (
+              <>
+                <StatsBar />
+                <LineChart data={opHolder} />
+                <OpPrice data={opPrice} />
+                <Airdops data={airdrops} />
+                <DailyTransactions data={transfer} />
+              </>
+            )}
           </>
         )}
 
         {view === "proposals" && (
           <Proposals />
         )}
+        <h1 className="text-center pt-10 text-gray-600 dark:text-gray-300 font-semibold text-sm md:text-base lg:text-lg dark:bg-gray-900">
+     Copyright ©️ 2024, Created by GovLens
+</h1>
       </div>
+   
     </div>
   );
 }

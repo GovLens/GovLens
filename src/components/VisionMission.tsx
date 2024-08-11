@@ -18,7 +18,7 @@ const data = [
 
 export default function VisionMission() {
   return (
-    <div className='bg-[#D2DAD9] h-[380px] pt-8 '>
+    <div className='bg-[#D2DAD9] h-[380px] mt-20 '>
        <Title title={"Vision And Mission "}/>
        <div className='flex items-center justify-center gap-16 mt-16 '>
        <VisionMissionCard  title={data[0].title}           imageUrl={data[0].imageUrl}  subtitle={data[0].subtitle}    />
