@@ -36,6 +36,7 @@ export default function LinkContainer() {
           </Link>
         ))}
       </div>
+        <Link href="/optimism-dao/proposals">Proposals</Link>
     </div>
   );
 }

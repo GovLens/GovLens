@@ -1,5 +1,5 @@
 "use client"
-import React from 'react';
+import React, { useEffect } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 const data = [
@@ -12,7 +12,16 @@ const data = [
   { month: 'Jul', holders: 300 },
 ];
 
-const CustomTooltip = ({ active, payload, label }) => {
+const CustomTooltip =({ active, payload, label }:any) => {  
+useEffect(() => {
+  const getData = async () => {
+  const dunedata = await fetch('/api/get-data');
+  const response = await dunedata.json();
+  
+  console.log(response.result.rows);
+  }
+  getData();  
+}, []);
   if (active && payload && payload.length) {
     return (
       <div className="bg-white border border-gray-300 p-2 shadow-md">

@@ -1,10 +1,15 @@
+"use client"
 import React from "react";
 import LinkContainer from "./Linkcontainer";
 import StatsBar from "./StatsBar";
 import DescriptionSection from "./Description";
+import Proposals from "./Proposals";
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 export default function Content() {
+  const router = useRouter();
+  console.log(router);
   return (
     <>
       <div className=" mx-auto px-4 sm:px-6 lg:px-8 py-12 pt-24 bg-[#E2E6E5]">

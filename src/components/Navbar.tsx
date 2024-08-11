@@ -7,12 +7,25 @@ import { ConnectBtn } from './ConnectBtn';
 import { motion } from 'framer-motion';
 import { IoIosHome } from "react-icons/io";
 import { Link as ScrollLink } from 'react-scroll';
+import { ConnectKitProvider } from "connectkit";
+import { WagmiProvider } from "wagmi";
+import { config } from 'process';
+import { mainnet, polygon, optimism, arbitrum, base, sepolia } from "wagmi/chains";
+import { getDefaultConfig, RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+
 
 export default function Navbar() {
   const pathname = usePathname();
+  const queryClient = new QueryClient();
 
   const isActive = (href: string) => pathname === href;
-
+  const config = getDefaultConfig({
+    appName: "GovLens",
+    projectId: "f8a6524307e28135845a9fe5811fcaa2",
+    chains: [sepolia],
+    ssr: true,
+  });
   return (
     <nav className="bg-[#E2E6E5] px-8 fixed top-0 left-0 w-full z-50 shadow-md">
       <div className="container mx-auto">
@@ -52,7 +65,7 @@ export default function Navbar() {
               whileTap={{ scale: 0.9, rotate: -10 }}
               className={`cursor-pointer   px-4 py-2 text-black transition-transform duration-300 ${isActive('/services') ? 'font-bold' : ''}`}
             >
-              <ScrollLink to="explore-dao" smooth={true} duration={900}                 offset={-160} 
+              <ScrollLink to="explore-dao" smooth={true} duration={900} offset={-160}
               >
                 Explore DAOs
               </ScrollLink>
@@ -61,7 +74,17 @@ export default function Navbar() {
 
           {/* Connect Button */}
           <div className="flex-shrink-0">
-            <ConnectBtn />
+            <WagmiProvider config={config}>
+              <QueryClientProvider client={queryClient}>
+
+                <RainbowKitProvider >
+
+                  <ConnectKitProvider>
+                    <ConnectBtn />
+                  </ConnectKitProvider>
+                </RainbowKitProvider>
+              </QueryClientProvider>
+            </WagmiProvider>
           </div>
         </div>
       </div>

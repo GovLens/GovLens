@@ -2,29 +2,16 @@
 import React from "react";
 import { HoverBorderGradient } from "../components/ui/hover-border-gradient";
 import {motion} from "framer-motion"
+import { ConnectKitButton } from "connectkit";
 
 
 
 export function ConnectBtn() {
     return (
+      <>
       
-
-
-<motion.button classname=" px-6 py-3 rounded-full text-lg w-[25%] "
- style={
-  {
-    width: '140px', // Set width here
-    borderRadius: '50px', // Border radius in px
-    boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px',
-     height:"50px",
-     marginRight:"100px"
-  }
- }
->
-      Connect Wallet
-    </motion.button>
-
-
+      <ConnectKitButton />
+      </>
 
       );
 }
