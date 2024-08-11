@@ -3,15 +3,15 @@ import React, { useState, useEffect } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { useInView } from 'react-intersection-observer';
 
-const data = [
-  { month: 'Jan', holders: 120 },
-  { month: 'Feb', holders: 150 },
-  { month: 'Mar', holders: 180 },
-  { month: 'Apr', holders: 200 },
-  { month: 'May', holders: 220 },
-  { month: 'Jun', holders: 250 },
-  { month: 'Jul', holders: 300 },
-];
+// const data = [
+//   { month: 'Jan', holders: 120 },
+//   { month: 'Feb', holders: 150 },
+//   { month: 'Mar', holders: 180 },
+//   { month: 'Apr', holders: 200 },
+//   { month: 'May', holders: 220 },
+//   { month: 'Jun', holders: 250 },
+//   { month: 'Jul', holders: 300 },
+// ];
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -25,7 +25,7 @@ const CustomTooltip = ({ active, payload, label }) => {
   return null;
 };
 
-const AreaChartComponent = () => {
+const AreaChartComponent = ({data}) => {
   const [key, setKey] = useState(0);
   const { ref, inView } = useInView({
     triggerOnce: false,
@@ -68,13 +68,13 @@ const AreaChartComponent = () => {
                 <stop offset="95%" stopColor="#4B5563" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <XAxis dataKey="month" stroke="#4B5563" />
+            <XAxis dataKey="Date" stroke="#4B5563" />
             <YAxis stroke="#4B5563" />
             <CartesianGrid strokeDasharray="3 3" stroke="#D1D5DB" />
             <Tooltip content={<CustomTooltip />} />
             <Area
               type="monotone"
-              dataKey="holders"
+              dataKey="Holders"
               stroke="#4B5563"
               fillOpacity={1}
               fill="url(#colorHolders)"

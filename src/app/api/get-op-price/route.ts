@@ -8,7 +8,7 @@ export async function GET(req: NextRequest) {
         return NextResponse.error();
     }
     const dune = new DuneClient(api);
-    const query_result = await dune.getLatestResult({ queryId: 2431982 });
+    const query_result = await dune.getLatestResult({ queryId: 3090519 });
     console.log(query_result);
     return NextResponse.json(query_result);
 }

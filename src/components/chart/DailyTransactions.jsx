@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-const DailyTransactions = () => {
+const DailyTransactions = ({data}) => {
   const [chartKey, setChartKey] = useState(0);
   const { ref, inView } = useInView({
     triggerOnce: false, // Trigger every time
@@ -20,13 +20,25 @@ const DailyTransactions = () => {
     }
   }, [inView]);
 
+  const aggregateData = data.reduce((acc, { time, txs }) => {
+    const date = new Date(time).toISOString().split('T')[0];
+    if (!acc[date]) {
+      acc[date] = 0;
+    }
+    acc[date] += txs;
+    return acc;
+  }, {});
+  const sortedDates = Object.keys(aggregateData).sort();
+const aggregatedData = sortedDates.map(date => aggregateData[date]);
+
+console.log(aggregatedData,sortedDates);
   // Sample data
-  const data = {
-    labels: ['2024-08-01', '2024-08-02', '2024-08-03', '2024-08-04', '2024-08-05', '2024-08-06', '2024-08-07'], // Dates
+  const viewdata = {
+    labels: sortedDates, // Dates
     datasets: [
       {
         label: 'Daily OP Transfers(M)',
-        data: [120, 200, 180, 220, 150, 250, 300], // Example transaction counts
+        data:aggregatedData, // Example transaction counts
         backgroundColor: 'rgba(59, 130, 246, 0.6)', // Bar fill color
         borderColor: '#4B5563', // Bar border color
         borderWidth: 1,
@@ -96,7 +108,7 @@ const DailyTransactions = () => {
     <div className="p-8 bg-gradient-to-b from-gray-200 to-gray-300" style={{ marginLeft: "30%", marginTop: "30px" }}>
       <div className="bg-gray-100 p-6rounded-lg shadow-lg" style={{ width: '70%' }}>
         <div ref={ref} style={{ width: '90%', height: '400px', marginLeft: "20px",paddingBottom:"10px" }}>
-          <Bar key={chartKey} data={data} options={options} />
+          <Bar key={chartKey} data={viewdata} options={options} />
         </div>
       </div>
     </div>

@@ -4,16 +4,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
-const data = [
-  { date: 'May 2022', price: 1.2, volume: 120 },
-  { date: 'Sep 2022', price: 1.0, volume: 30 },
-  { date: 'Jan 2023', price: 2.5, volume: 90 },
-  { date: 'May 2023', price: 1.8, volume: 50 },
-  { date: 'Aug 2023', price: 1.5, volume: 20 },
-  { date: 'Dec 2023', price: 3.8, volume: 110 },
-  { date: 'Apr 2024', price: 2.2, volume: 40 },
-  { date: 'Aug 2024', price: 1.3, volume: 10 },
-];
+
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -21,21 +12,20 @@ const CustomTooltip = ({ active, payload, label }) => {
       <div className="bg-gray-800 text-black border border-gray-600 p-2 ">
         <p className="font-bold text-gray-700">{label}</p>
         <p className="text-blue-600">Price: ${payload[0].value.toFixed(2)}</p>
-        <p className="text-red-600">Volume: {payload[1].value}m</p>
       </div>
     );
   }
   return null;
 };
 
-const OpPrice = () => {
+const OpPrice = ({data}) => {
   const [chartData, setChartData] = useState([]);
   const [key, setKey] = useState(0);
   const { ref, inView } = useInView({
     triggerOnce: false,
     threshold: 0.1,
   });
-
+console.log(data)
   useEffect(() => {
     const timer = setTimeout(() => {
       setChartData(data);
@@ -60,7 +50,7 @@ const OpPrice = () => {
     >
       <div className="bg-gray-100 p-6 rounded-lg" style={{ width: '70%' }}>
         <ResponsiveContainer width="100%" height={400}>
-          <ComposedChart key={key} data={chartData} margin={{ top: 50, right: 30, left: 30, bottom: 50 }}>
+          <ComposedChart key={key} data={data} margin={{ top: 50, right: 30, left: 30, bottom: 50 }}>
             <text 
               x="50%" 
               y="30" 
@@ -100,7 +90,7 @@ const OpPrice = () => {
                 <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
               </linearGradient>
             </defs>
-            <XAxis dataKey="date" stroke="#4b5563" />
+            <XAxis dataKey="time" stroke="#4b5563" />
             <YAxis yAxisId="left" stroke="#ef4444" domain={[0, 'dataMax']} />
             <YAxis yAxisId="right" orientation="right" stroke="" domain={[0, 'dataMax']} tick={false} />
             <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
