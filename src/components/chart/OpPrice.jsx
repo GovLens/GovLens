@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, Bar, ComposedChart } from 'recharts';
 import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const data = [
   { date: 'May 2022', price: 1.2, volume: 120 },
@@ -17,10 +18,8 @@ const data = [
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
-    
-
-       <div className="bg-gray-800 text-black border border-gray-600 p-2 ">
-       <p className="font-bold text-gray-700">{label}</p>
+      <div className="bg-gray-800 text-black border border-gray-600 p-2 ">
+        <p className="font-bold text-gray-700">{label}</p>
         <p className="text-blue-600">Price: ${payload[0].value.toFixed(2)}</p>
         <p className="text-red-600">Volume: {payload[1].value}m</p>
       </div>
@@ -31,6 +30,11 @@ const CustomTooltip = ({ active, payload, label }) => {
 
 const OpPrice = () => {
   const [chartData, setChartData] = useState([]);
+  const [key, setKey] = useState(0);
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.1,
+  });
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -39,32 +43,34 @@ const OpPrice = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (inView) {
+      setKey(prev => prev + 1);
+    }
+  }, [inView]);
+
   return (
     <motion.div 
+      ref={ref}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl "
+      className="p-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl"
       style={{marginLeft:"30%",marginTop:"25px"}}
     >
-     
-      <div className="bg-gray-100 p-6 rounded-lg" style={{ width: '70%',  }}>
+      <div className="bg-gray-100 p-6 rounded-lg" style={{ width: '70%' }}>
         <ResponsiveContainer width="100%" height={400}>
-          <ComposedChart data={chartData} margin={{ top: 50, right: 30, left: 30, bottom: 50 }}>
-            {/* Title */}
+          <ComposedChart key={key} data={chartData} margin={{ top: 50, right: 30, left: 30, bottom: 50 }}>
             <text 
               x="50%" 
               y="30" 
               textAnchor="middle" 
               dominantBaseline="middle" 
-              className="text-[20px] font-extrabold text-gray-700"
+              className="text-[24px] font-bold	 text-gray-700"
             >
               $OP Trades / Price
             </text>
 
-         
-
-            {/* Y-axis label (left) for Volume */}
             <text 
               x="-30" 
               y="200" 
@@ -76,7 +82,6 @@ const OpPrice = () => {
               Volume (M)
             </text>
 
-            {/* Y-axis label (right) for Price */}
             <text 
               x="100%" 
               y="200" 

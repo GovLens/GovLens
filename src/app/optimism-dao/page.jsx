@@ -4,6 +4,7 @@ import Navbar from '@/components/Navbar'
 import React from 'react'
 import Content from './Content'
 import Airdops from "../../components/chart/Airdops"
+import DailyTransactions from "../../components/chart/DailyTransactions"
 export default function Page() {
   return (
     <div>
@@ -14,6 +15,7 @@ export default function Page() {
         <LineChart/>
         <OpPrice/>
       <Airdops/>
+      <DailyTransactions/>
 
       </div>
 
