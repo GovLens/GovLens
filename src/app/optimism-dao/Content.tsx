@@ -61,7 +61,7 @@ export default function Content({ view, setView }:any) {
         <div className="shadow-md flex items-center bg-gray-100 rounded-full px-3 py-1 space-x-2">
           <div className="relative w-6 h-6">
             <Image
-              src="/img/layer2.jpg"
+              src="https://govlens.vercel.app/img/leyar2.jpg"
               alt="Ethereum Logo"
               layout="fixed"
               width={24}
