@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from "react";
 
+const formatNumber = (num:any) => {
+  if (num >= 1000000) {
+    return (num / 1000000).toFixed(1) + 'M';
+  } else if (num >= 1000) {
+    return (num / 1000).toFixed(1) + 'K';
+  } else {
+    return num.toString();
+  }
+};
+
 export default function StatsBar() {
   const [stats, setStats] = useState([
     { value:0, label: 'Optimism Unique Users' },
@@ -20,11 +30,11 @@ export default function StatsBar() {
         console.log("data......", data);
 
         setStats([
-          { value: data.uniqueUser.result.rows[0]._col0, label: 'Optimism Unique Users' },
-          { value: (data.govCost.result.rows[0].usd_total).toFixed(3), label: 'Total Gov. Costs' },
-          { value: data.totalTransaction.result.rows[0].Transactions, label: 'Total Transaction' },
-          { value: data.DelegatedOp.result.rows[0].total_delegated.toFixed(3), label: 'OP Delegated' },
-          { value: data.airDropedOp.result.rows[0].OP.toFixed(3), label: '$OP Airdropped' },
+          { value: formatNumber(data.uniqueUser.result.rows[0]._col0), label: 'Optimism Unique Users' },
+          { value: formatNumber(parseFloat(data.govCost.result.rows[0].usd_total)), label: 'Total Gov. Costs' },
+          { value: formatNumber(data.totalTransaction.result.rows[0].Transactions), label: 'Total Transaction' },
+          { value: formatNumber(parseFloat(data.DelegatedOp.result.rows[0].total_delegated)), label: 'OP Delegated' },
+          { value: formatNumber(parseFloat(data.airDropedOp.result.rows[0].OP)), label: '$OP Airdropped' },
         ]);
       } catch (error) {
         console.error('Error fetching data:', error);

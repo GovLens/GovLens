@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import LineChart from '@/components/chart/Linechart'
 import OpPrice from '@/components/chart/OpPrice'
 import Navbar from '@/components/Navbar'
@@ -7,11 +7,18 @@ import React from 'react'
 import Content from './Content'
 import Airdops from "../../components/chart/Airdops"
 import DailyTransactions from "../../components/chart/DailyTransactions"
+import Proposals from './Proposals';
+import StatsBar from './StatsBar';
 export default function Page() {
+  const [view, setView] = useState("analysis");
   const [opHolder, setOpHolder] = React.useState([]);
   const [opPrice, setOpPrice] = React.useState([]);
   const [airdrops, setirdrops] = React.useState([]);
   const [transfer, setTransfer] = React.useState([]);
+  const handleSetView = (newView) => {
+    setView(newView);
+  };
+
   useEffect(() => {
     const getData = async () => {
       try {
@@ -69,17 +76,26 @@ export default function Page() {
   return (
     <div>
       <Navbar/>
-      <Content/>
-      <div className="bg-[#E2E6E5] "  >
+      <Content view={view} setView={handleSetView} />
       
-        <LineChart data = {opHolder}/>
+       
+
+      {/* Conditional Rendering Based on View */}
+      <div className="bg-[#E2E6E5]">
+        {view === "analysis" && (
+          <>
+          <StatsBar/>
+          <LineChart data = {opHolder}/>
         <OpPrice data ={opPrice}/>
       <Airdops data={airdrops}/>
       <DailyTransactions data ={transfer}/>
+          </>
+        )}
 
+        {view === "proposals" && (
+          <Proposals />
+        )}
       </div>
-
-
     </div>
-  )
+  );
 }

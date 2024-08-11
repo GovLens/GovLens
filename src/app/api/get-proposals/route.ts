@@ -13,25 +13,29 @@ const GET_PROPOSALS = gql`
       proposalId
       blockTimestamp
       description
-      proposer      
+      proposer 
+      transactionHash     
     }
     proposalCreated2S(orderDirection: desc, orderBy: blockTimestamp, first: 100) {
       proposalId
       blockTimestamp
       description
       proposer
+      transactionHash
     }
     proposalCreated3S(orderDirection: desc, orderBy: blockTimestamp, first: 100) {
       proposalId
       blockTimestamp
       description
       proposer
+      transactionHash
     }
     proposalCreateds(orderDirection: desc, orderBy: blockTimestamp, first: 100) {
       proposalId
       blockTimestamp
       description
       proposer
+      transactionHash
     }
   }
 `;
