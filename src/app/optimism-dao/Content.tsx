@@ -27,7 +27,7 @@ export default function Content() {
           <div className="flex items-center bg-gray-100 rounded-full px-3 py-1 space-x-2">
             <div className="relative w-6 h-6">
               <Image
-                src="/img/logo-etheriam.jpg"
+                src="/img/layer2.jpg"
                 alt="Ethereum Logo"
                 layout="fixed"
                 width={24}
