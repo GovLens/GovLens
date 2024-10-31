@@ -14,13 +14,6 @@
 - *Increased Community Engagement*: Tracking community participation and sentiment for better engagement.
 - *Risk Mitigation*: Identifying potential risks through metric monitoring for proactive measures.
 
-## Sponsors
-
-GovLens is powered by:
-
-- As of now we have added [Optimism DAO](https://www.optimism.io/)
-- For real-time data from blockchain we have used [Goldsky](https://goldsky.com)
-- For transaction insights we have implemented [Blockscout](https://www.blockscout.com/)
 
 ## Target Audience
 
